@@ -1,0 +1,15 @@
+@Override//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!УДАЛИТЬ!!!!!!!!!!!!!!!!!!!
+    public String toString() {
+        Node curr = this.head;
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("LinkedList [");
+        while (curr != null) {
+            stringBuilder.append(curr.value);
+            if (curr.next != null) {
+                stringBuilder.append(", ");
+            }
+            curr = curr.next;
+        }
+        stringBuilder.append("]");
+        return stringBuilder.toString();
+    }
