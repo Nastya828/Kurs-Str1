@@ -26,15 +26,31 @@ public class Task1 {
         list3.addInTail(new Node(2));
         list3.addInTail(new Node(92));
         list3.addInTail(new Node(92));
+       list3.addInTail(new Node(92));
         list3.addInTail(new Node(92));
         list3.addInTail(new Node(66));
         list3.addInTail(new Node(66));
         System.out.println("list3 = " + list3 + " length3 = " + list3.count());
         list3.remove(92);
-        list3.removeAll(2);
+        System.out.println("tail = " + list3.tail.value + " head = " + list3.head.value);
+        System.out.println(list3.remove(2));
         System.out.println("list3 = " + list3 + " length3 = " + list3.count());
+        System.out.println("tail = " + list3.tail.value + " head = " + list3.head.value);
         list3.removeAll(66);
         System.out.println("list3 = " + list3 + " length3 = " + list3.count());
+        System.out.println("tail = " + list3.tail.value + " head = " + list3.head.value);
+        list3.removeAll(92);
+        System.out.println("list3 = " + list3 + " length3 = " + list3.count());
+        System.out.println("tail = " + list3.tail+ " head = " + list3.head);
+        list3.removeAll(92);
+        System.out.println("list3 = " + list3 + " length3 = " + list3.count());
+        System.out.println("tail = " + list3.tail+ " head = " + list3.head);
+        list3.addInTail(new Node(66));
+        System.out.println("list3 = " + list3 + " length3 = " + list3.count());
+        System.out.println("tail = " + list3.tail.value+ " head = " + list3.head.value);
+        list3.remove(66);
+        System.out.println("list3 = " + list3 + " length3 = " + list3.count());
+        System.out.println("tail = " + list3.tail+ " head = " + list3.head);
 
     }
 

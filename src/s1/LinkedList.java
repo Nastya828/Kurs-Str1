@@ -47,7 +47,11 @@ public class LinkedList {
         if (node == null) {
             return false;
         }
-        if (node.value == _value) {
+        if (node.value == _value && node.next == null) {
+            this.head = null;
+            this.tail = null;
+            return true;
+        } else if (node.value == _value) {
             this.head = node.next;
             return true;
         }
@@ -121,7 +125,6 @@ public class LinkedList {
         }
 
     }
-
 }
 
 class Node {
