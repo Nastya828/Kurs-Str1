@@ -120,9 +120,13 @@ public class LinkedList {
             node = node.next;
         }
 
-        if (_nodeAfter == null) {
+        if (_nodeAfter == null && this.tail != null) {
             _nodeToInsert.next = this.head;
             this.head = _nodeToInsert;
+        }else if (_nodeAfter == null){
+            _nodeToInsert.next = this.head;
+            this.head = _nodeToInsert;
+            this.tail = _nodeToInsert;
         }
 
     }

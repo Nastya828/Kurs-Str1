@@ -53,17 +53,23 @@ public class Task1 {
         System.out.println("list3 = " + list3 + " length3 = " + list3.count());
         System.out.println("head = " + list3.head.value + " tail = " + list3.tail.value);
         list3.insertAfter(new Node(92), new Node(145));
-        System.out.println("list3 = " + list3 + " length3 = " + list3.count());
-        System.out.println("head = " + list3.head.value + " tail = " + list3.tail.value);
+        System.out.println("111list3 = " + list3 + " length3 = " + list3.count());
+        System.out.println("1111head = " + list3.head.value + " tail = " + list3.tail.value);
         list3.removeAll(145);
         System.out.println("list3 = " + list3 + " length3 = " + list3.count());
         System.out.println("head = " + list3.head.value + " tail = " + list3.tail.value);
+        list3.insertAfter(null, new Node(145));
+        System.out.println("111list3 = " + list3 + " length3 = " + list3.count());
+        System.out.println("1111head = " + list3.head.value + " tail = " + list3.tail.value);
         list3.remove(2);
         System.out.println("list3 = " + list3 + " length3 = " + list3.count());
         System.out.println("head = " + list3.head.value + " tail = " + list3.tail.value);
         list3.clear();
         System.out.println("list3 = " + list3 + " length3 = " + list3.count());
         System.out.println("head = " + list3.head+ " tail = " + list3.tail);
+        list3.insertAfter(null, new Node(145));
+        System.out.println("111list3 = " + list3 + " length3 = " + list3.count());
+        System.out.println("1111head = " + list3.head.value + " tail = " + list3.tail.value);
 
     }
 
