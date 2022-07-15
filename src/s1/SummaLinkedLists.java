@@ -9,7 +9,7 @@ public class SummaLinkedLists {
         if (list1.count() != list2.count()) {
             return result;
         }
-        while (n1 != null && n2 != null) {
+        while (n1 != null) {
             result.addInTail(new Node(n1.value + n2.value));
             n1 = n1.next;
             n2 = n2.next;
