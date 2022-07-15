@@ -87,6 +87,7 @@ public class LinkedList {
             node = n1;
         }
         this.head = null;
+        this.tail = null;
     }
 
     public int count() {
@@ -125,6 +126,7 @@ public class LinkedList {
         }
 
     }
+
 }
 
 class Node {
