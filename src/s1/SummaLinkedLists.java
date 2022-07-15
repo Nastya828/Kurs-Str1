@@ -6,7 +6,10 @@ public class SummaLinkedLists {
         LinkedList result = new LinkedList();
         Node n1 = list1.head;
         Node n2 = list2.head;
-        while (n1 != null && n2 != null && list1.count() == list2.count()) {
+        if (list1.count() != list2.count()) {
+            return result;
+        }
+        while (n1 != null && n2 != null) {
             result.addInTail(new Node(n1.value + n2.value));
             n1 = n1.next;
             n2 = n2.next;
