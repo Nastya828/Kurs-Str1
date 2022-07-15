@@ -44,22 +44,23 @@ class LinkedListTest {
         list.addInTail(new Node(1));
         list.addInTail(new Node(3));
         list.addInTail(new Node(1));
+        list.addInTail(new Node(1));
         list.addInTail(new Node(4));
         Assertions.assertTrue(list.remove(1));
-        Assertions.assertTrue(list.count() == 5);
+        Assertions.assertTrue(list.count() == 6);
     }
 
     @org.junit.jupiter.api.Test
     void removeAll() {
         Assertions.assertFalse(list.remove(1));
         list.addInTail(new Node(1));
-        list.addInTail(new Node(2));
+        list.addInTail(new Node(1));
         list.addInTail(new Node(1));
         list.addInTail(new Node(3));
         list.addInTail(new Node(1));
         list.addInTail(new Node(4));
         list.removeAll(1);
-        Assertions.assertTrue(list.count() == 3);
+        Assertions.assertTrue(list.count() == 2);
         Assertions.assertTrue(list.find(1) == null);
     }
 
