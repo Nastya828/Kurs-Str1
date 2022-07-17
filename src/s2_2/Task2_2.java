@@ -49,6 +49,7 @@ public class Task2_2 {
         linkedlist3.removeAll(-1);
         System.out.println(linkedlist3 + " head = " + linkedlist3.head.value + " tail = " + linkedlist3.tail.value);
         System.out.println("count = " + linkedlist3.count());
+        System.out.println(linkedlist3.find(0));
 
 
     }

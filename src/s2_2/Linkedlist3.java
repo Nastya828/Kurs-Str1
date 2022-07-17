@@ -21,8 +21,8 @@ public class Linkedlist3 {
     }
 
     public Node find(int _value) {
-        Node node = this.head;
-        while (node != null) {
+        Node node = this.head.next;
+        while (node != this.tail) {
             if (node.value == _value) {
                 return node;
             }
@@ -33,8 +33,8 @@ public class Linkedlist3 {
 
     public ArrayList<Node> findAll(int _value) {
         ArrayList<Node> nodes = new ArrayList<Node>();
-        Node node = this.head;
-        while (node != null) {
+        Node node = this.head.next;
+        while (node != this.tail) {
             if (node.value == _value) {
                 nodes.add(node);
             }
