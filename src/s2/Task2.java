@@ -5,14 +5,7 @@ import java.util.ArrayList;
 
 public class Task2 {
     public static void main(String[] args) {
-        LinkedList2 list = new LinkedList2();
-        list.addInTail(new Node(1));
-        list.addInTail(new Node(2));
-        System.out.println(list.find(1).value);
-        System.out.println(list.find(1).next.value);
-
-
-
+       LinkedList2 linkedList2= new LinkedList2();
     }
 
     public static void print(LinkedList2 list) {
