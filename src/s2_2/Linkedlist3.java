@@ -3,8 +3,8 @@ package s2_2;
 import java.util.*;
 
 public class Linkedlist3 {
-    public final Node head = new Node(0);
-    public final Node tail = new Node(-1);
+    public final DummyNode head = new DummyNode(0);
+    public final DummyNode tail = new DummyNode(-1);
 
     Linkedlist3() {
         head.next = tail;
@@ -22,7 +22,7 @@ public class Linkedlist3 {
 
     public Node find(int _value) {
         Node node = this.head.next;
-        while (node != this.tail) {
+        while (!(node instanceof DummyNode)) {
             if (node.value == _value) {
                 return node;
             }
@@ -34,7 +34,7 @@ public class Linkedlist3 {
     public ArrayList<Node> findAll(int _value) {
         ArrayList<Node> nodes = new ArrayList<Node>();
         Node node = this.head.next;
-        while (node != this.tail) {
+        while (!(node instanceof DummyNode)) {
             if (node.value == _value) {
                 nodes.add(node);
             }
@@ -45,7 +45,7 @@ public class Linkedlist3 {
 
     public boolean remove(int _value) {
         Node node = this.head.next;
-        while (node != this.tail) {
+        while (!(node instanceof DummyNode)) {
             if (node.value == _value) {
                 node.prev.next = node.next;
                 node.next.prev = node.prev;
@@ -58,7 +58,7 @@ public class Linkedlist3 {
 
     public void removeAll(int _value) {
         Node node = this.head.next;
-        while (node != this.tail) {
+        while (!(node instanceof DummyNode)) {
             remove(_value);
             node = node.next;
         }
@@ -66,7 +66,7 @@ public class Linkedlist3 {
 
     public void clear() {
         Node node = this.head.next;
-        while (node != this.tail) {
+        while (!(node instanceof DummyNode)) {
             Node n1 = node.next;
             node.next = null;
             node = n1;
@@ -77,11 +77,11 @@ public class Linkedlist3 {
 
     public int count() {
         Node node = this.head.next;
-        if (node == this.tail) {
+        if (node instanceof DummyNode) {
             return 0;
         }
         int counter = 0;
-        while (node != this.tail) {
+        while (!(node instanceof DummyNode)) {
             counter++;
             node = node.next;
         }
@@ -90,7 +90,7 @@ public class Linkedlist3 {
 
     public void insertAfter(Node _nodeAfter, Node _nodeToInsert) {
         Node node = this.head.next;
-        while (node != this.tail && _nodeAfter != null) {
+        while (!(node instanceof DummyNode) && _nodeAfter != null) {
             Node insert = new Node(_nodeToInsert.value);
             if (node.value == _nodeAfter.value) {
                 node.next.prev = insert;
@@ -134,6 +134,13 @@ class Node {
         value = _value;
         next = null;
         prev = null;
+    }
+}
+
+class DummyNode extends Node {
+
+    public DummyNode(int _value) {
+        super(_value);
     }
 }
 
