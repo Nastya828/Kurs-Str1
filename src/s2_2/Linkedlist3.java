@@ -3,8 +3,8 @@ package s2_2;
 import java.util.*;
 
 public class Linkedlist3 {
-    public final DummyNode head = new DummyNode(0);
-    public final DummyNode tail = new DummyNode(-1);
+    public final DummyNode head = new DummyNode();
+    public final DummyNode tail = new DummyNode();
 
     Linkedlist3() {
         head.next = tail;
@@ -139,8 +139,8 @@ class Node {
 
 class DummyNode extends Node {
 
-    public DummyNode(int _value) {
-        super(_value);
+    public DummyNode() {
+        super(-1);
     }
 }
 
