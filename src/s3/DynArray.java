@@ -3,6 +3,23 @@ package s3;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
+class ArrayOutException extends Exception {
+    private int errorCode = 0;
+
+    public ArrayOutException(String message) {
+        this(message, 0);
+    }
+
+    public ArrayOutException(String message, int errorCode) {
+        super(message);
+        this.errorCode = errorCode;
+    }
+
+    public int getErrorCode() {
+        return errorCode;
+    }
+}
+
 public class DynArray<T> {
     public T[] array;
     public int count;
@@ -37,11 +54,11 @@ public class DynArray<T> {
         this.capacity = array.length;
     }
 
-    public T getItem(int index) throws ArrayIndexOutOfBoundsException {
+    public T getItem(int index) throws ArrayOutException {
         if (index < array.length) {
             return array[index];
         } else {
-            throw new ArrayIndexOutOfBoundsException();
+            throw new ArrayOutException("ArrayOut", 10);
         }
     }
 
@@ -59,10 +76,10 @@ public class DynArray<T> {
     }
 
 
-    public void insert(T itm, int index) throws ArrayIndexOutOfBoundsException {
+    public void insert(T itm, int index) throws ArrayOutException {
 
         if (index > capacity) {
-            throw new ArrayIndexOutOfBoundsException();
+            throw new ArrayOutException("ArrayOut", 10);
         }
 
         count = counter() + 1;
@@ -81,13 +98,10 @@ public class DynArray<T> {
     }
 
 
-    public void remove(int index) throws ArrayIndexOutOfBoundsException {
-        try {
-            if (index > array.length) {
-                throw new ArrayIndexOutOfBoundsException();
-            }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            return;
+    public void remove(int index) throws ArrayOutException {
+
+        if (index > array.length) {
+            throw new ArrayOutException("ArrayOut", 10);
         }
 
         if (counter() != 0 && array[index] != null) {
