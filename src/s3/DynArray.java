@@ -34,6 +34,7 @@ public class DynArray<T> {
         for (int i = 0; i < count - 1; i++) {
             array[i] = (T) arrayCopy[i];
         }
+        this.capacity = array.length;
     }
 
     public T getItem(int index) throws ArrayIndexOutOfBoundsException {
@@ -84,7 +85,7 @@ public class DynArray<T> {
             throw new ArrayIndexOutOfBoundsException();
         }
 
-        if (counter() != 0) {
+        if (counter() != 0 && array[index] != null) {
             count--;
         }
         if (count < (array.length / 2) && array.length != 16) {
@@ -115,7 +116,7 @@ public class DynArray<T> {
     public String toString() {
         return "DynArray{" +
                 "array=" + Arrays.toString(array) +
-                ", \ncount=" + count +
+                ", \ncount=" + this.count +
                 ", array.length=" + array.length +
                 ", clazz=" + clazz +
                 '}';
