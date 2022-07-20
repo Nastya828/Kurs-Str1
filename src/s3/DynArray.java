@@ -60,12 +60,9 @@ public class DynArray<T> {
 
 
     public void insert(T itm, int index) throws ArrayIndexOutOfBoundsException {
-        try {
-            if (index > capacity) {
-                throw new ArrayIndexOutOfBoundsException();
-            }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            return;
+
+        if (index > capacity) {
+            throw new ArrayIndexOutOfBoundsException();
         }
 
         count = counter() + 1;
