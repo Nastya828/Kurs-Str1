@@ -60,11 +60,15 @@ public class DynArray<T> {
 
 
     public void insert(T itm, int index) throws ArrayIndexOutOfBoundsException {
-        if (index > array.length) {
-            throw new ArrayIndexOutOfBoundsException();
+        try {
+            if (index > capacity) {
+                throw new ArrayIndexOutOfBoundsException();
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return;
         }
-        count = counter() + 1;
 
+        count = counter() + 1;
         if (this.count > this.array.length) {
             makeArray(array.length * 2);
         }
@@ -73,7 +77,7 @@ public class DynArray<T> {
         }
         if (index == array.length) {
             array[index - 1] = itm;
-        } else {
+        } else if (index < array.length) {
             array[index] = itm;
         }
 
@@ -81,8 +85,12 @@ public class DynArray<T> {
 
 
     public void remove(int index) throws ArrayIndexOutOfBoundsException {
-        if (index > array.length) {
-            throw new ArrayIndexOutOfBoundsException();
+        try {
+            if (index > array.length) {
+                throw new ArrayIndexOutOfBoundsException();
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return;
         }
 
         if (counter() != 0 && array[index] != null) {
