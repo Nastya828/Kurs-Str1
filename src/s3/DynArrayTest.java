@@ -29,12 +29,24 @@ class DynArrayTest {
     @Test
     void insert() throws ArrayOutException {
         DynArray<Integer> dry = new DynArray<>(Integer.class);
-        xDry(dry, 1000);
+        xDry(dry, 1048);
+        Assertions.assertEquals(dry.count, 1048);
+        Assertions.assertEquals(dry.capacity, 2048);
         try {
-            dry.insert(18, 4000);
+            dry.insert(666, 1096);
             fail("Test insert failed!");
         } catch (ArrayOutException exception) {
-            Assertions.assertTrue(exception.getErrorCode() == 10);
+            assertEquals(10, exception.getErrorCode());
+        }
+
+        Assertions.assertEquals(dry.count, 1048);
+        Assertions.assertEquals(dry.capacity, 2048);
+
+        try {
+            dry.insert(666, 4000);
+            fail("Test insert failed!");
+        } catch (ArrayOutException exception) {
+            assertEquals(10, exception.getErrorCode());
         }
 
     }
