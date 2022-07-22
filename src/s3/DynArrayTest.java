@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DynArrayTest {
-    // DynArray<Integer> dry = new DynArray<>(Integer.class);
 
-    public void xDry(DynArray<Integer> dry) {
-        for (int i = 0; i < dry.capacity; i++) {
+
+    public void xDry(DynArray<Integer> dry, int n) {
+        for (int i = 0; i < n; i++) {
             dry.append(i);
         }
     }
@@ -19,7 +19,7 @@ class DynArrayTest {
     void append() {
         DynArray<Integer> dryAppend = new DynArray<>(Integer.class);
         Assertions.assertEquals(dryAppend.capacity, 16);
-        xDry(dryAppend);
+        xDry(dryAppend,dryAppend.capacity );
         Assertions.assertEquals(dryAppend.capacity, 16);
         dryAppend.append(888);
         Assertions.assertEquals(dryAppend.capacity, 16 * 2);
@@ -29,20 +29,21 @@ class DynArrayTest {
     @Test
     void insert() throws ArrayOutException {
         DynArray<Integer> dry = new DynArray<>(Integer.class);
+        xDry(dry, 1000);
         try {
-            dry.insert(18, 29);
+            dry.insert(18, 4000);
             fail("Test insert failed!");
         } catch (ArrayOutException exception) {
             Assertions.assertTrue(exception.getErrorCode() == 10);
         }
-        dry.insert(555, 7);
+
     }
 
 
     @Test
     void remove() throws ArrayOutException {
         DynArray<Integer> dryRemove = new DynArray<>(Integer.class);
-        xDry(dryRemove);
+        xDry(dryRemove, dryRemove.capacity);
         Assertions.assertEquals(dryRemove.capacity, 16);
         dryRemove.remove(5);
         Assertions.assertEquals(dryRemove.capacity, 16);
