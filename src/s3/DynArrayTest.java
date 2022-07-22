@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class DynArrayTest {
 
 
-    public void xDry(DynArray<Integer> dry, int n) {
+    public void xDry(DynArray<Integer> dry, int n) throws ArrayOutException {
         for (int i = 0; i < n; i++) {
             dry.append(i);
         }
@@ -16,11 +16,12 @@ class DynArrayTest {
 
 
     @Test
-    void append() {
+    void append() throws ArrayOutException {
         DynArray<Integer> dryAppend = new DynArray<>(Integer.class);
         Assertions.assertEquals(dryAppend.capacity, 16);
-        xDry(dryAppend, dryAppend.capacity);
+        xDry(dryAppend, 16);
         Assertions.assertEquals(dryAppend.capacity, 16);
+
         dryAppend.append(888);
         Assertions.assertEquals(dryAppend.capacity, 16 * 2);
     }
@@ -37,12 +38,12 @@ class DynArrayTest {
 
         try {
             dry.insert(256, 1096);
+            fail("Test 1047 insert failed!");
         } catch (ArrayOutException exception) {
-             fail("Test 1047 insert failed!");
             assertEquals(10, exception.getErrorCode());
         }
 
-        Assertions.assertEquals(dry.count, 1048);
+        Assertions.assertEquals(dry.count, 1047);
         Assertions.assertEquals(dry.capacity, 2048);
 
         try {
