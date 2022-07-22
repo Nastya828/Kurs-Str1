@@ -19,7 +19,7 @@ class DynArrayTest {
     void append() {
         DynArray<Integer> dryAppend = new DynArray<>(Integer.class);
         Assertions.assertEquals(dryAppend.capacity, 16);
-        xDry(dryAppend,dryAppend.capacity );
+        xDry(dryAppend, dryAppend.capacity);
         Assertions.assertEquals(dryAppend.capacity, 16);
         dryAppend.append(888);
         Assertions.assertEquals(dryAppend.capacity, 16 * 2);
@@ -29,13 +29,16 @@ class DynArrayTest {
     @Test
     void insert() throws ArrayOutException {
         DynArray<Integer> dry = new DynArray<>(Integer.class);
-        xDry(dry, 1048);
-        Assertions.assertEquals(dry.count, 1048);
+        for (int i = 0; i < 1047; i++) {
+            dry.insert(i, dry.count);
+        }
+        Assertions.assertEquals(dry.count, 1047);
         Assertions.assertEquals(dry.capacity, 2048);
+
         try {
-            dry.insert(666, 1096);
-            fail("Test insert failed!");
+            dry.insert(256, 1096);
         } catch (ArrayOutException exception) {
+             fail("Test 1047 insert failed!");
             assertEquals(10, exception.getErrorCode());
         }
 
@@ -44,7 +47,7 @@ class DynArrayTest {
 
         try {
             dry.insert(666, 4000);
-            fail("Test insert failed!");
+            fail("Test4000 insert failed!");
         } catch (ArrayOutException exception) {
             assertEquals(10, exception.getErrorCode());
         }
