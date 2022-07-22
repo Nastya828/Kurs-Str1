@@ -19,6 +19,14 @@ public class funcOrder {
                 queueRes.push(queueRes.pop() + queueRes.pop());
             } else if (c == '*') {
                 queueRes.push(queueRes.pop() * queueRes.pop());
+            } else if (c == '-') {
+                int a = queueRes.pop();
+                int b = queueRes.pop();
+                queueRes.push(b - a);
+            } else if (c == '/' && queueRes.peek() != 0) {
+                int a = queueRes.pop();
+                int b = queueRes.pop();
+                queueRes.push(b / a);
             } else if (c == '=') {
                 return queueRes.pop();
             }
