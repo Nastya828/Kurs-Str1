@@ -11,7 +11,6 @@ public class funcOrder {
                 queue.push(chars[i]);
             }
         }
-        System.out.println(queue + " size = " + queue.size());
         while (queue.size() > 0) {
             char c = queue.pop();
             if (Character.isDigit(c)) {
@@ -20,9 +19,11 @@ public class funcOrder {
                 queueRes.push(queueRes.pop() + queueRes.pop());
             } else if (c == '*') {
                 queueRes.push(queueRes.pop() * queueRes.pop());
+            } else if (c == '=') {
+                return queueRes.pop();
             }
         }
-        System.out.println(queueRes + " size = " + queueRes.size());
+
         return 0;
     }
 }

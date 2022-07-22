@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Stack<T> {
     public List<Object> stack;
+
     public Stack() {
         stack = new ArrayList<>();
 
@@ -15,11 +16,11 @@ public class Stack<T> {
     }
 
     public T pop() {
-        if(!stack.isEmpty()) {
-            T res = (T)stack.get(stack.size()-1);
-            stack.remove(stack.size()-1);
+        if (!stack.isEmpty()) {
+            T res = (T) stack.get(stack.size() - 1);
+            stack.remove(stack.size() - 1);
             return res;
-        }else {
+        } else {
             return null;
         }
     }
@@ -29,9 +30,9 @@ public class Stack<T> {
     }
 
     public T peek() {
-        if(!stack.isEmpty()) {
+        if (!stack.isEmpty()) {
             return (T) stack.get(stack.size() - 1);
-        }else {
+        } else {
             return null;
         }
     }
