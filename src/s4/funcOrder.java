@@ -11,24 +11,27 @@ public class funcOrder {
                 queue.push(chars[i]);
             }
         }
+        int a = 0;
+        int b = 0;
+
         while (queue.size() > 0) {
             char c = queue.pop();
             if (Character.isDigit(c)) {
                 queueRes.push(c - 48);
             } else if (c == '+') {
-                queueRes.push(queueRes.pop() + queueRes.pop());
+                queueRes.push(a + b);
             } else if (c == '*') {
-                queueRes.push(queueRes.pop() * queueRes.pop());
+                queueRes.push(a * b);
             } else if (c == '-') {
-                int a = queueRes.pop();
-                int b = queueRes.pop();
                 queueRes.push(b - a);
-            } else if (c == '/' && queueRes.peek() != 0) {
-                int a = queueRes.pop();
-                int b = queueRes.pop();
+            } else if (c == '/' && a != 0) {
                 queueRes.push(b / a);
             } else if (c == '=') {
                 return queueRes.pop();
+            }
+            if (queueRes.size() > 1) {
+                a = queueRes.pop();
+                b = queueRes.pop();
             }
         }
 

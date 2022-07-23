@@ -9,9 +9,9 @@ public class functionBr {
             } else if (stack.size() == 0) {
                 return false;
             }
-            char c1 = stack.peek();
+            char c1 = stack.pop();
             if (c1 == '(' && c == ')') {
-                stack.pop();
+
             } else {
                 return false;
             }
