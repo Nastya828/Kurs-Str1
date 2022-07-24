@@ -6,15 +6,17 @@ public class functionBr {
         for (char c : str.toCharArray()) {
             if (stack.size() == 0 && (c != '(')) {
                 return false;
-            } else {
+            } else if (c == '(') {
                 stack.push(c);
+            } else if (c == ')') {
+                stack.pop();
             }
         }
-        while (stack.size() > 0) {
-            if (!(stack.pop() == ')' && stack.pop() == '(')) {
-                return false;
-            }
-        }
-        return true;
+//        while (stack.size() > 0) {
+//            if (!(stack.pop() == ')' && stack.pop() == '(')) {
+//                return false;
+//            }
+//        }
+        return stack.size() == 0;
     }
 }
