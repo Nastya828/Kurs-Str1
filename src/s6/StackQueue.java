@@ -17,13 +17,17 @@ public class StackQueue<T> {
 
 
     public T dequeue() {
+        copy();
+        return secondStack.pop();
+    }
+
+    public void copy() {
+        if (secondStack.size() > 0) {
+            return;
+        }
         while (firstStack.size() > 0) {
             secondStack.push(firstStack.pop());
         }
-        if (secondStack.size() > 0) {
-            return (T) secondStack.pop();
-        }
-        return null;
     }
 
     public int size() {
