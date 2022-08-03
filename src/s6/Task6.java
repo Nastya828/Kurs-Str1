@@ -2,20 +2,23 @@ package s6;
 
 public class Task6 {
     public static void main(String[] args) {
-        Queue<Object> queue = new Queue<>();
+        StackQueue<Object> queue = new StackQueue<>();
         String str = "string";
         Integer y = 88;
         Double aDouble = 8.98;
         StringBuilder stringBuilder = new StringBuilder("stringBuilder");
 
-        queue.enqueue(str);
+        queue.enqueue(1);
         System.out.println(queue);
-        queue.enqueue(y);
+        queue.enqueue(2);
         System.out.println(queue);
-        queue.enqueue(aDouble);
+        queue.enqueue(3);
         System.out.println(queue);
-        queue.enqueue(stringBuilder);
+        queue.enqueue(4);
         System.out.println(queue);
+        queue.enqueue(5);
+        System.out.println(queue);
+
 
         System.out.println(queue.dequeue());
         System.out.println(queue);
