@@ -32,9 +32,9 @@ public class Stack<T> {
     public T peek() {
         if (!stack.isEmpty()) {
             return (T) stack.get(stack.size() - 1);
-        } else {
-            return null;
         }
+        return null;
+
     }
 
     @Override
