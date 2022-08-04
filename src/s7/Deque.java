@@ -2,37 +2,48 @@ package s7;
 
 import java.util.*;
 
-public class Deque<T>
-{
-    public Deque()
-    {
-        // инициализация внутреннего хранилища
+public class Deque<T> {
+    List<Object> deque;
+
+    public Deque() {
+        this.deque = new ArrayList<>();
     }
 
-    public void addFront(T item)
-    {
-        // добавление в голову
+    public void addFront(T item) {
+        deque.add(0, item);
+
     }
 
-    public void addTail(T item)
-    {
-        // добавление в хвост
+    public void addTail(T item) {
+        deque.add(item);
     }
 
-    public T removeFront()
-    {
-        // удаление из головы
-        return null;
+    public T removeFront() {
+        T x = null;
+        if (!deque.isEmpty()) {
+            x = (T) deque.get(0);
+            deque.remove(0);
+        }
+        return x;
     }
 
-    public T removeTail()
-    {
-        // удаление из хвоста
-        return null;
+    public T removeTail() {
+        T x = null;
+        if (!deque.isEmpty()) {
+            x = (T) deque.get(deque.size() - 1);
+            deque.remove(deque.size() - 1);
+        }
+        return x;
     }
 
-    public int size()
-    {
-        return 0; // размер очереди
+    public int size() {
+        return deque.size();
+    }
+
+    @Override
+    public String toString() {
+        return "Deque{" +
+                "deque=" + deque +
+                '}' + " size = " + size();
     }
 }
