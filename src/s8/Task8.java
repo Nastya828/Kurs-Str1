@@ -1,83 +1,85 @@
 package s8;
 
 
+import java.util.ArrayList;
 
 public class Task8 {
     public static void main(String[] args) {
-        Node<Integer> node1 = new Node<>(1);
-        Node<Integer> node2 = new Node<>(2);
-
-        OrderedList<Integer> orderedList = new OrderedList<>(false);
-        System.out.println(orderedList  + " head = " + orderedList.head + "tail = " + orderedList.tail);
-        orderedList.add(1);
-        System.out.println(orderedList  + " head = " + orderedList.head.value + " tail = " + orderedList.tail.value);
-        System.out.println("prev = " + orderedList.find(1).prev + " node = "  +
-                orderedList.find(1).value + " next = " + orderedList.find(1).next);
-        orderedList.add(11);
-        System.out.println(orderedList  + " head = " + orderedList.head.value + " tail = " + orderedList.tail.value);
-        System.out.println("prev = " + orderedList.find(11).prev.value + " node = "  +
-                orderedList.find(11).value + " next = " + orderedList.find(11).next);
-        orderedList.add(9);
-        System.out.println(orderedList  + " head = " + orderedList.head.value + " tail = " + orderedList.tail.value);
-        System.out.println("prev = " + orderedList.find(9).prev.value + " node = "  +
-                orderedList.find(9).value + " next = " + orderedList.find(9).next.value);
-        orderedList.add(91);
-        System.out.println(orderedList  + " head = " + orderedList.head.value + " tail = " + orderedList.tail.value);
-        System.out.println("prev = " + orderedList.find(91).prev.value + " node = "  +
-                orderedList.find(91).value + " next = " + orderedList.find(91).next);
-        orderedList.delete(91);
-        System.out.println(orderedList  + " head = " + orderedList.head.value + " tail = " + orderedList.tail.value);
-        orderedList.delete(9);
-        System.out.println(orderedList  + " head = " + orderedList.head.value + " tail = " + orderedList.tail.value);
-        System.out.println("prev = " + orderedList.find(11).prev.value + " node = "  +
-                orderedList.find(11).value + " next = " + orderedList.find(11).next);
-        orderedList.clear(true);
-        System.out.println(orderedList  + " head = " + orderedList.head + " tail = " + orderedList.tail);
 
 
-
-
-
-
-
-
-       // System.out.println("7 ?? 9 =  " + orderedList.compare(7, 9));
-
-    }
-
-    public static void print(OrderedList orderedList) {
-        if (orderedList.head != null && orderedList.tail != null) {
-            System.out.println(orderedList + " head = " + orderedList.head.value + " tail = " + orderedList.tail.value +
-                    " count = " + orderedList.count());
-        } else if (orderedList.head == null && orderedList.tail != null) {
-            System.out.println(orderedList + " head = " + orderedList.head + " tail = " + orderedList.tail.value + " count = "
-                    + orderedList.count());
-        } else if (orderedList.head != null && orderedList.tail == null) {
-            System.out.println(orderedList + " head = " + orderedList.head.value +
-                    " tail = " + orderedList.tail + " count = " + orderedList.count());
-        } else {
-            System.out.println(orderedList + " head = " + orderedList.head + " tail = "
-                    + orderedList.tail + " count = " + orderedList.count());
-        }
-
-        Node<Integer> n = orderedList.head;
-        while (n != null) {
+        OrderedList<Integer> orderedList = new OrderedList<>(true);
+        ArrayList<Node<Integer>> arrayList = orderedList.getAll();
+        System.out.println(orderedList);
+        for (Node<Integer> n : arrayList) {
             if (n.prev != null && n.next != null) {
-                System.out.println(" prev = " + orderedList.find(n.value).prev.value + " node = " + orderedList.find(n.value).value
-                        + " next = " + orderedList.find(n.value).next.value);
+                System.out.println("prev = " + n.prev.value + " node = " + n.value + " next = " + n.next.value);
             } else if (n.prev == null && n.next != null) {
-                System.out.println(" prev = " + orderedList.find(n.value).prev + " node = " + orderedList.find(n.value).value
-                        + " next = " + orderedList.find(n.value).next.value);
+                System.out.println("prev = " + n.prev + " node = " + n.value + " next = " + n.next.value);
             } else if (n.prev != null && n.next == null) {
-                System.out.println(" prev = " + orderedList.find(n.value).prev.value + " node = " + orderedList.find(n.value).value
-                        + " next = " + orderedList.find(n.value).next);
-            } else {
-                System.out.println(" prev = " + orderedList.find(n.value).prev + " node = " + orderedList.find(n.value).value
-                        + " next = " + orderedList.find(n.value).next);
+                System.out.println("prev = " + n.prev.value + " node = " + n.value + " next = " + n.next);
+            } else if (n.prev == null && n.next == null) {
+                System.out.println("prev = " + n.prev + " node = " + n.value + " next = " + n.next);
+            } else if (n == null) {
+                System.out.println("prev = " + n.prev + " node = " + n + " next = " + n.next);
             }
-            n = n.next;
+            System.out.println(orderedList.head.value + " " + orderedList.tail.value);
         }
+        System.out.println(orderedList.head + " " + orderedList.tail);
+        for (int i = 0; i < 4; i++) {
+            orderedList.add(2);
+            System.out.println("head = " + orderedList.head.value + " tail = " + orderedList.tail.value);
+        }
+        System.out.println(orderedList);
+        ArrayList<Node<Integer>> arrayList1 = orderedList.getAll();
+        for (Node<Integer> n : arrayList1) {
+            if (n.prev != null && n.next != null) {
+                System.out.println("prev = " + n.prev.value + " node = " + n.value + " next = " + n.next.value);
+            } else if (n.prev == null && n.next != null) {
+                System.out.println("prev = " + n.prev + " node = " + n.value + " next = " + n.next.value);
+            } else if (n.prev != null && n.next == null) {
+                System.out.println("prev = " + n.prev.value + " node = " + n.value + " next = " + n.next);
+            } else if (n.prev == null && n.next == null) {
+                System.out.println("prev = " + n.prev + " node = " + n.value + " next = " + n.next);
+            } else if (n == null) {
+                System.out.println("prev = " + n.prev + " node = " + n + " next = " + n.next);
+            }
+        }
+        System.out.println();
+        orderedList.add(91);
+        orderedList.add(1);
+        System.out.println(orderedList);
+        orderedList.add(2);
+        orderedList.add(91);
+        System.out.println(orderedList);
+        orderedList.add(1);
+        System.out.println(orderedList);
+        orderedList.add(100);
+        System.out.println(orderedList);
+        System.out.println(orderedList.find(100).value);
+        System.out.println(orderedList.find(100).prev + " " + orderedList.find(100).next);
+        orderedList.add(0);
+        System.out.println(orderedList);
+        orderedList.delete(2);
+        System.out.println(orderedList);
+        orderedList.delete(100);
+        System.out.println(orderedList);
+        ArrayList<Node<Integer>> arrayList2 = orderedList.getAll();
+        for (Node<Integer> n : arrayList2) {
+            if (n.prev != null && n.next != null) {
+                System.out.println("prev = " + n.prev.value + " node = " + n.value + " next = " + n.next.value);
+            } else if (n.prev == null && n.next != null) {
+                System.out.println("prev = " + n.prev + " node = " + n.value + " next = " + n.next.value);
+            } else if (n.prev != null && n.next == null) {
+                System.out.println("prev = " + n.prev.value + " node = " + n.value + " next = " + n.next);
+            } else if (n.prev == null && n.next == null) {
+                System.out.println("prev = " + n.prev + " node = " + n.value + " next = " + n.next);
+            } else if (n == null) {
+                System.out.println("prev = " + n.prev + " node = " + n + " next = " + n.next);
+            }
+
+
+        }
+
+
     }
-
-
 }

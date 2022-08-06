@@ -38,7 +38,7 @@ public class OrderedList<T> {
     public void setOrderElements(Node<T> node, T value) {
         while (node != null) {
             Node<T> nodeNew = new Node<>(value);
-            if (node.next == null && compare(node.value, value) == -1) {
+            if (node.next == null && compare(node.value, value) != 1) {
                 nodeNew.next = null;
                 nodeNew.prev = node;
                 node.next = nodeNew;
@@ -59,6 +59,8 @@ public class OrderedList<T> {
                 nodeNew.next.prev = nodeNew;
                 return;
             }
+
+
             node = node.next;
         }
     }
@@ -66,7 +68,7 @@ public class OrderedList<T> {
     public void setElements(Node<T> node, T value) {
         while (node != null) {
             Node<T> nodeNew = new Node<>(value);
-            if (node.next == null && compare(value, node.value) == -1) {
+            if (node.next == null && compare(value, node.value) != 1) {
                 nodeNew.next = null;
                 nodeNew.prev = node;
                 node.next = nodeNew;
@@ -106,6 +108,7 @@ public class OrderedList<T> {
     }
 
     public void addInTail(Node _item) {
+        System.out.println("tail");
         if (head == null) {
             this.head = _item;
             this.head.next = null;
