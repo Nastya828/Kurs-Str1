@@ -44,13 +44,15 @@ public class OrderedList<T> {
                 node.next = nodeNew;
                 this.tail = nodeNew;
                 return;
-            } else if (compare(node.value, value) == 1) {
+            }
+            if (compare(node.value, value) == 1) {
                 nodeNew.next = node;
                 nodeNew.prev = null;
                 this.head = nodeNew;
                 nodeNew.next.prev = nodeNew;
                 return;
-            } else if (node.next != null && compare(node.value, value) != 1 && compare(node.next.value, value) == 1) {
+            }
+            if (node.next != null && compare(node.value, value) != 1 && compare(node.next.value, value) == 1) {
                 nodeNew.next = node.next;
                 nodeNew.prev = node;
                 node.next = nodeNew;
@@ -70,13 +72,15 @@ public class OrderedList<T> {
                 node.next = nodeNew;
                 this.tail = nodeNew;
                 return;
-            } else if (compare(value, node.value) == 1) {
+            }
+            if (compare(value, node.value) == 1) {
                 nodeNew.next = node;
                 nodeNew.prev = null;
                 this.head = nodeNew;
                 nodeNew.next.prev = nodeNew;
                 return;
-            } else if (node.next != null && compare(value, node.value) != 1 && compare(value, node.next.value) == 1) {
+            }
+            if (node.next != null && compare(value, node.value) != 1 && compare(value, node.next.value) == 1) {
                 nodeNew.next = node.next;
                 nodeNew.prev = node;
                 node.next = nodeNew;

@@ -7,7 +7,7 @@ public class Task8 {
         Node<Integer> node1 = new Node<>(1);
         Node<Integer> node2 = new Node<>(2);
 
-        OrderedList<Integer> orderedList = new OrderedList<>(true);
+        OrderedList<Integer> orderedList = new OrderedList<>(false);
         System.out.println(orderedList  + " head = " + orderedList.head + "tail = " + orderedList.tail);
         orderedList.add(1);
         System.out.println(orderedList  + " head = " + orderedList.head.value + " tail = " + orderedList.tail.value);
