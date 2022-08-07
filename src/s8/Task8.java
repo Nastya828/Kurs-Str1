@@ -26,7 +26,7 @@ public class Task8 {
         }
         System.out.println(orderedList.head + " " + orderedList.tail);
         for (int i = 0; i < 4; i++) {
-            orderedList.add(2);
+            orderedList.add(-22);
             System.out.println("head = " + orderedList.head.value + " tail = " + orderedList.tail.value);
         }
         System.out.println(orderedList);
@@ -47,12 +47,13 @@ public class Task8 {
         System.out.println();
         orderedList.add(91);
         orderedList.add(1);
+
         System.out.println(orderedList);
-        orderedList.add(2);
+        System.out.println(orderedList.compare(9, 89));
+        orderedList.add(-22);
         orderedList.add(91);
         System.out.println(orderedList);
         orderedList.add(1);
-        System.out.println(orderedList);
         orderedList.add(100);
         System.out.println(orderedList);
         System.out.println(orderedList.find(100).value);
@@ -61,7 +62,7 @@ public class Task8 {
         System.out.println(orderedList);
         orderedList.delete(2);
         System.out.println(orderedList);
-        orderedList.delete(100);
+        orderedList.add(null);
         System.out.println(orderedList);
         ArrayList<Node<Integer>> arrayList2 = orderedList.getAll();
         for (Node<Integer> n : arrayList2) {
@@ -77,9 +78,9 @@ public class Task8 {
                 System.out.println("prev = " + n.prev + " node = " + n + " next = " + n.next);
             }
 
-
         }
-
+        orderedList.clear(true);
+        System.out.println(orderedList);
 
     }
 }

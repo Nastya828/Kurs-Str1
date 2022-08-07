@@ -24,28 +24,53 @@ public class OrderedList<T> {
         _ascending = asc;
     }
 
+
     public int compare(T v1, T v2) {
-        if ((int) v1 < (int) v2) {
+        if (v1 == null && v2 != null) {
             return -1;
         }
-        if ((int) v1 == (int) v2) {
+
+        if (v1 instanceof Integer && v2 instanceof Integer) {
+            return compareInt((int) v1, (int) v2);
+        }
+
+        if (v1 instanceof String && v2 instanceof String) {
+            return compareString((String) v1, (String) v2);
+        }
+        return 2;
+    }
+
+    public int compareInt(int v1, int v2) {
+        if (v1 < v2) {
+            return -1;
+        }
+        if (v1 > v2) {
+            return 1;
+        }
+        return 0;
+    }
+
+    public int compareString(String v1, String v2) {
+        if (v1.compareTo(v2) < 0) {
+            return -1;
+        }
+        if (v1.compareTo(v2) == 0) {
             return 0;
         }
         return 1;
-
     }
 
     public void setOrderElements(Node<T> node, T value) {
         while (node != null) {
             Node<T> nodeNew = new Node<>(value);
-            if (node.next == null && compare(node.value, value) != 1) {
+            if (value != null && node.next == null && compare(node.value, value) != 1) {
                 nodeNew.next = null;
                 nodeNew.prev = node;
                 node.next = nodeNew;
                 this.tail = nodeNew;
                 return;
             }
-            if (compare(node.value, value) == 1) {
+            if (compare(node.value, value) == 1 || value == null) {
                 nodeNew.next = node;
                 nodeNew.prev = null;
                 this.head = nodeNew;
@@ -107,8 +132,7 @@ public class OrderedList<T> {
 
     }
 
-    public void addInTail(Node _item) {
-        System.out.println("tail");
+    public void addInTail(Node<T> _item) {
         if (head == null) {
             this.head = _item;
             this.head.next = null;
