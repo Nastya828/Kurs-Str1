@@ -15,7 +15,7 @@ public class Task9 {
                 System.out.println(hashTable);
             }
         }
-        System.out.println("index = " + hashTable.put("Hello World"));
+        System.out.println("index = " + hashTable.put(null));
         System.out.println(hashTable);
         System.out.println(" find = " + hashTable.find(" ыы"));
     }

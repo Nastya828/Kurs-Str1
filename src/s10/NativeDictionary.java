@@ -8,7 +8,7 @@ import java.util.Objects;
 class NativeDictionary<T> {
     public int size;
     public String[] slots;
-    public int step = 1;
+    public int step = 3;
     public T[] values;
 
     public NativeDictionary(int sz, Class clazz) {
@@ -36,11 +36,15 @@ class NativeDictionary<T> {
     }
 
     public void put(String key, T value) {
-        int x = put(key);
-        if (x != -1) {
+        int x = putOld(key);
+        if (x != -1 && x < values.length) {
             values[x] = value;
-        } else {
-            values[search()] = value;
+            return;
+        }
+        int s = search();
+        if (s != -1) {
+            slots[s] = key;
+            values[s] = value;
         }
     }
 
@@ -80,7 +84,7 @@ class NativeDictionary<T> {
         return -1;
     }
 
-    public int put(String value) {
+    public int putOld(String value) {
         int index = seekSlot(value);
         if (index != -1) {
             this.slots[index] = value;
