@@ -3,7 +3,6 @@ package s10;
 import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
-import java.util.Objects;
 
 class NativeDictionary<T> {
     public int size;
@@ -27,12 +26,7 @@ class NativeDictionary<T> {
     }
 
     public boolean isKey(String key) {
-        for (String str : slots) {
-            if (Objects.equals(str, key)) {
-                return true;
-            }
-        }
-        return false;
+        return find(key) != -1;
     }
 
     public void put(String key, T value) {
