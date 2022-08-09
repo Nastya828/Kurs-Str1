@@ -45,6 +45,10 @@ class NativeDictionary<T> {
             putForNullKey(value);
             return;
         }
+        if(find(key) != -1){
+            values[find(key)]=value;
+            return;
+        }
         int x = putOld(key);
         if (x != -1 && x < values.length && x != 0) {
             values[x] = value;

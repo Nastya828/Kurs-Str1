@@ -13,14 +13,21 @@ class NativeDictionaryTest {
     @Test
     void isKey() {
         NativeDictionary<Integer> dictionary = new NativeDictionary<>(97, Integer.class);
+        dictionary.put(null, 23);
+        System.out.println(dictionary);
+        dictionary.put(null, 345);
+        System.out.println(dictionary);
+        dictionary.get(null);
         for (int i = 1; i < 100; i++) {
             dictionary.put("ii", i);
+
             Assertions.assertTrue(dictionary.isKey("ii"), "ii");
         }
         for (int i = 1; i < 50; i++) {
-            dictionary.put(i + "ii", i);
-            Assertions.assertFalse(dictionary.isKey(i + "ii"), i + "ii");
+            dictionary.put("uu", i);
+            Assertions.assertTrue(dictionary.isKey( "uu"),  "uu");
         }
+        System.out.println(dictionary);
     }
 
     @Test
