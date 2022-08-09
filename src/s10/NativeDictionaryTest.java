@@ -12,19 +12,15 @@ class NativeDictionaryTest {
 
     @Test
     void isKey() {
-        NativeDictionary<Integer> dictionary = new NativeDictionary<>(19, Integer.class);
-        String key6 = "null";
-        String key7 = "key7";
-        dictionary.put(key6, 6);
-        Assertions.assertTrue(dictionary.isKey(key6));
-        Assertions.assertFalse(dictionary.isKey(key7));
-        dictionary.put(key7, 7);
-        Assertions.assertTrue(dictionary.isKey(key7));
-        dictionary.put(key7, 7);
-        Assertions.assertTrue(dictionary.isKey(key7));
-        dictionary.put(null, 9);
-        Assertions.assertTrue(dictionary.isKey(null));
-        Assertions.assertFalse(dictionary.isKey("Hello"));
+        NativeDictionary<Integer> dictionary = new NativeDictionary<>(97, Integer.class);
+        for (int i = 1; i < 100; i++) {
+            dictionary.put("ii", i);
+            Assertions.assertTrue(dictionary.isKey("ii"), "ii");
+        }
+        for (int i = 1; i < 50; i++) {
+            dictionary.put(i + "ii", i);
+            Assertions.assertFalse(dictionary.isKey(i + "ii"), i + "ii");
+        }
     }
 
     @Test
