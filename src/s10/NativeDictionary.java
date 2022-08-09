@@ -102,10 +102,10 @@ class NativeDictionary<T> {
     }
 
     public int find(String value) {
-        if (value == null && (slots[0] != null || values[0] == null)) {
+        if (value == null && slots[0] != null) {
             return -1;
         }
-        if (value == null && slots[0] == null && values[0] != null) {
+        if (value == null && slots[0] == null) {
             return 0;
         }
         int x;

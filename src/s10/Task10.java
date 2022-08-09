@@ -2,7 +2,7 @@ package s10;
 
 public class Task10 {
     public static void main(String[] args) {
-        NativeDictionary<Object> nativeDictionary = new NativeDictionary<>(81, Object.class);
+        NativeDictionary<Object> nativeDictionary = new NativeDictionary<>(20, Object.class);
         System.out.println(nativeDictionary);
 
         System.out.println(nativeDictionary.isKey(null));
