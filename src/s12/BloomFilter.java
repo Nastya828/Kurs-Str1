@@ -1,60 +1,57 @@
 package s12;
 
-import java.util.BitSet;
-
 public class BloomFilter {
     public int filter_len;
-    public BitSet bitSet;
+    int filter;
 
     public BloomFilter(int f_len) {
         filter_len = f_len;
-        // создаём битовый массив длиной f_len
-
-        //Если нужен битовый массив из N бит
-        //выделяешь N/32 интов.
-        //бит с номером n является n%32 битом в n/32 инте массива
-
-        bitSet = new BitSet(f_len);
-
-        bitSet.set(0, 0, true);
-
+        filter = 0;
     }
 
- 
-    //Хэш-функции можно использовать достаточно простые, например версия для строки:
-    //организуем цикл до длины строки, результат в этом цикле считаем как его версия с предыдущей итерации,
-    // умноженная на случайное число,
-    // к которой прибавляется код очередного символа, и берём результат тут же по модулю длины таблицы.
+
     public int hash1(String str1) {
-        // 17
         int x = 17;
+        int code = 0;
         for (int i = 1; i < str1.length(); i++) {
-            int code = str1.charAt(i);
+            code = (str1.charAt(i) + code * x) % 32;
         }
-        // реализация ...
-        return 0;
+        return Math.abs(code);
     }
 
     public int hash2(String str1) {
-        // 223
-        // реализация ...
-        return 0;
+        int x = 223;
+        int code = 0;
+        for (int i = 1; i < str1.length(); i++) {
+            code = (str1.charAt(i) + code * x) % 32;
+        }
+        return Math.abs(code);
     }
 
     public void add(String str1) {
-        // добавляем строку str1 в фильтр
+        int x = hash1(str1);
+        int y = hash2(str1);
+        if (isValue(str1)) {
+            return;
+        }
+        filter = filter ^ (1 << x);
+        filter = filter ^ (1 << y);
+
     }
 
     public boolean isValue(String str1) {
-        // проверка, имеется ли строка str1 в фильтре
-        return false;
+        int x = hash1(str1);
+        int y = hash2(str1);
+        int t = 0;
+        t ^= (1 << x);
+        t ^= (1 << y);
+        return (filter & t) == t;
     }
 
     @Override
     public String toString() {
         return "BloomFilter{" +
-                "filter_len=" + filter_len +
-                ", bitSet=" + bitSet +
+                "filter_len=" + Integer.toBinaryString(filter) +
                 '}';
     }
 }
