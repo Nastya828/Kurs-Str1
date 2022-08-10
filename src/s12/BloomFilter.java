@@ -34,17 +34,26 @@ public class BloomFilter {
         if (isValue(str1)) {
             return;
         }
-        filter = filter ^ (1 << x);
-        filter = filter ^ (1 << y);
+        if (x != y) {
+            filter = filter ^ (1 << x);
+            filter = filter ^ (1 << y);
+        } else {
+            filter = filter ^ (1 << x);
+        }
 
     }
 
     public boolean isValue(String str1) {
         int x = hash1(str1);
         int y = hash2(str1);
+
         int t = 0;
-        t ^= (1 << x);
-        t ^= (1 << y);
+        if (x != y) {
+            t ^= (1 << x);
+            t ^= (1 << y);
+        } else {
+            t ^= (1 << x);
+        }
         return (filter & t) == t;
     }
 
