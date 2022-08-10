@@ -12,14 +12,7 @@ public class PowerSet {
     }
 
     public int size() {
-
-        int n = 0;
-        for (String str : this.powerSet) {
-            if (str != null) {
-                n++;
-            }
-        }
-        return n;
+        return this.powerSet.size();
 
     }
 
