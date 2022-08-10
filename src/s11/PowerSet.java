@@ -70,7 +70,7 @@ public class PowerSet {
 
     public boolean isSubset(PowerSet set2) {
         if (set2.powerSet.isEmpty()) {
-            return false;
+            return true;
         }
         for (String s : set2.powerSet) {
             if (s != null && !this.powerSet.contains(s)) {

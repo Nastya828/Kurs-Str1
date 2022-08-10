@@ -14,12 +14,12 @@ public class Task11 {
         for (int i = 100; i < powerSet2.capacity + 100; i++) {
             powerSet2.put(i + "hello");
         }
-        for (int i = 0; i < 14; i++) {
-            powerSetSub.put(i + "hello");
-        }
+//        for (int i = 0; i < 14; i++) {
+//            powerSetSub.put(i + "hello");
+//        }
         System.out.println(powerSet + " size = " + powerSet.size() + "\n Set2 =" + powerSet2 + " size2 = " + powerSet2.size());
         System.out.println(powerSetSub);
-        System.out.println(powerSetSub.difference(powerSet));
+        System.out.println(powerSet.isSubset(powerSetSub));
 
 
 

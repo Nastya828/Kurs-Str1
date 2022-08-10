@@ -9,6 +9,11 @@ public class BloomFilter {
     public BloomFilter(int f_len) {
         filter_len = f_len;
         // создаём битовый массив длиной f_len
+
+        //Если нужен битовый массив из N бит
+        //выделяешь N/32 интов.
+        //бит с номером n является n%32 битом в n/32 инте массива
+
         bitSet = new BitSet(f_len);
 
         bitSet.set(0, 0, true);
@@ -22,8 +27,9 @@ public class BloomFilter {
     // к которой прибавляется код очередного символа, и берём результат тут же по модулю длины таблицы.
     public int hash1(String str1) {
         // 17
-        for (int i = 0; i < str1.length(); i++) {
-            int code = (int) str1.charAt(i);
+        int x = 17;
+        for (int i = 1; i < str1.length(); i++) {
+            int code = str1.charAt(i);
         }
         // реализация ...
         return 0;
