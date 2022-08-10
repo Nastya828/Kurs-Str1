@@ -5,7 +5,7 @@ import java.util.List;
 
 public class PowerSet {
     List<String> powerSet;
-    final public int capacity = 20_000;
+    final public int capacity = 15;
 
     public PowerSet() {
         this.powerSet = new ArrayList<>(capacity);
@@ -59,17 +59,9 @@ public class PowerSet {
     }
 
     public PowerSet difference(PowerSet set2) {
-
-        PowerSet unionInter = union(set2);
-        PowerSet setInter = intersection(set2);
-        if (set2.powerSet.isEmpty()) {
-            return unionInter;
-        }
-
         PowerSet diffInter = new PowerSet();
-
-        for (String s : unionInter.powerSet) {
-            if (s != null && !setInter.powerSet.contains(s)) {
+        for (String s : this.powerSet) {
+            if (s != null && !set2.powerSet.contains(s)) {
                 diffInter.put(s);
             }
         }
@@ -91,7 +83,7 @@ public class PowerSet {
     @Override
     public String toString() {
         return "PowerSet{" +
-                "powerSet=" + powerSet +
+                "\npowerSet=" + powerSet +
                 '}';
     }
 }
